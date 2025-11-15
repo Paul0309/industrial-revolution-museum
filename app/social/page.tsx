@@ -96,8 +96,8 @@ export default function SocialPage() {
         {/* 데이터 디스플레이 카드 */}
         <section className="grid md:grid-cols-[1.4fr,2fr] gap-10 items-center">
           {/* 그래프 자리 */}
-          <div className="aspect-[4/3] rounded-2xl border border-dashed border-neutral-300 bg-white/70 flex items-center justify-center text-neutral-400 text-sm">
-            <span>📊 Urban population growth chart (1850–1914) goes here</span>
+          <div className="aspect-[4/3] rounded-2xl border border-dashed border-neutral-300 bg-white flex items-center justify-center text-neutral-400 text-sm">
+            <iframe src="https://ourworldindata.org/grapher/long-term-urban-population-region?time=1200..latest&tab=line" loading="lazy" style={{ "width":"130%", "height":"100%" }} allow="web-share; clipboard-write"></iframe>
           </div>
 
           {/* 데이터 캡션 */}
@@ -127,4 +127,3 @@ export default function SocialPage() {
     </main>
   );
 }
-
