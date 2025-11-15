@@ -1,141 +1,182 @@
-"use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
+'use client'
 
-// app/economic/page.tsx
+import Link from "next/link";
 
 export default function EconomicPage() {
   return (
-    <main className="min-h-screen flex justify-center px-4 py-16">
-      <div className="w-full max-w-5xl space-y-12">
-        
-        {/* ---------- HEADER ---------- */}
-        <section className="space-y-4 text-center md:text-left">
-          <p className="text-sm font-semibold tracking-[0.2em] text-neutral-500 uppercase">
+    <main className="min-h-screen bg-[#fdf4e3] text-neutral-900">
+      <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-4 py-10 md:py-14">
+
+        {/* ---------- PAGE TITLE ---------- */}
+        <section className="mb-8 space-y-3">
+          <p className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50/80 px-3 py-1 text-xs font-medium tracking-[0.22em] uppercase text-amber-700">
             Exhibit 2 · Economic Impacts
           </p>
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900">
-            Innovation, Productivity, and Inequality
+          <h1 className="text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl">
+            Economic Impacts: Innovation &amp; Inequality
           </h1>
-          <p className="text-base md:text-lg text-neutral-600 max-w-3xl leading-relaxed mx-auto md:mx-0">
-            How did industrialisation create both unprecedented growth and widening inequality?
+          <p className="max-w-2xl text-sm text-stone-700">
+            This exhibit uses classic economic texts, worker testimony, and wage data to explore how
+            the Industrial Revolution increased production and wages for some, while deepening
+            instability and inequality for many workers.
           </p>
         </section>
 
-        {/* ---------- MAIN CONTENT GRID ---------- */}
-        <section className="grid gap-10 md:grid-cols-[2fr,1.4fr] items-start">
-
-          {/* ---------- LEFT: Mini-argument ---------- */}
-          <article className="space-y-4 bg-white/80 backdrop-blur-sm border border-neutral-200 rounded-2xl p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-neutral-900">
-              Mini-Argument · How did industry reshape economies?
+        <div className="flex flex-col gap-8 pb-10">
+          {/* ---------- MINI ARGUMENT ---------- */}
+          <section className="rounded-2xl border border-amber-200 bg-[#fff8ee] p-5 shadow-sm">
+            <h2 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-amber-700">
+              Mini-Argument
             </h2>
-
-            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
-              <strong>The Industrial Revolution generated massive economic growth but also deepened inequality.</strong> 
-              Adam Smith’s <span className="italic">Wealth of Nations</span> (1776) argued that monopolies and trade barriers 
-              suppressed fair markets, anticipating the competitive capitalist structures that later shaped global trade.
+            <p className="text-sm leading-relaxed text-neutral-800">
+              As <span className="italic">The Wealth of Nations</span> by Smith indicates,
+              exclusive companies which have mercantile monopoly are always less convenient and
+              destructive for a healthy economy (Smith, 1776). According to the{" "}
+              <span className="italic">Communist Manifesto</span>, growing competition among the
+              bourgeoisie led to commercial crises, even causing workers&apos; wages to become more
+              unstable and fluctuating (Marx &amp; Engels, 1848). In addition, during 1750–1914 in
+              the United Kingdom, real average weekly wages were observed to increase, while nominal
+              average weekly wages showed only a slight upward trend (Broadberry et al., 2015).
+              Therefore, the Industrial Revolution brought both rising wages and repeated assaults
+              on the economy through inequality and instability, as seen in the wage chart and
+              primary sources.
             </p>
+          </section>
 
-            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
-              Meanwhile, Marx and Engels warned in the <span className="italic">Communist Manifesto</span> (1848) that this 
-              same competition created wage instability and exploitation for workers. Historical wage data from 1750–1914 
-              shows that while productivity and national income grew, pay increases for workers lagged behind, leaving the 
-              benefits of industrialisation concentrated in the hands of factory owners and elites.
-            </p>
+          {/* ---------- PRIMARY SOURCES GRID ---------- */}
+          <section className="grid gap-6 md:grid-cols-2">
+            {/* Marx & Engels – Communist Manifesto */}
+            <article className="flex flex-col gap-3 rounded-2xl border border-stone-200 bg-[#fffdf7] p-5 shadow-sm">
+              <header className="space-y-1">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">
+                  Primary Source 1
+                </p>
+                <h2 className="text-sm font-semibold text-neutral-900">
+                  Karl Marx &amp; Friedrich Engels, <span className="italic">Communist Manifesto</span> (1848)
+                </h2>
+              </header>
 
-            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-medium">
-              These contrasting patterns reveal that industrialisation produced innovation and global wealth—but not evenly. 
-              Economic transformation came with rising class divisions that still echo in modern labour systems.
-            </p>
-          </article>
+              <div className="rounded-xl border border-stone-200 bg-white p-3">
+                <p className="text-xs leading-relaxed text-stone-800">
+                  This source is written by Karl Marx and Friedrich Engels to inspire workers’
+                  movements. It is biased toward socialism, but it is an important source to
+                  understand social and economic inequality. This excerpt shows how the Industrial
+                  Revolution led to unstable wages. Even though technology and commercial growth
+                  expanded, social consequences created by capitalism left many workers vulnerable
+                  to crises.
+                </p>
+              </div>
 
-          {/* ---------- RIGHT SIDE: ARTIFACT CARDS ---------- */}
-          <aside className="space-y-4">
+              <div className="space-y-1 text-[11px] text-stone-600">
+                <p className="italic">
+                  Caption: Marx and Engels describe how competition and capitalist crises created
+                  unstable wages and insecurity for workers, challenging the idea that industrial
+                  growth was purely beneficial.
+                </p>
+                <p>
+                  Source note: Written by socialist theorists advocating for worker reform, this
+                  text strongly criticizes capitalism, which may exaggerate negative aspects, but it
+                  clearly shows contemporary concerns about inequality.
+                </p>
+              </div>
+            </article>
 
-            {/* Adam Smith Artifact */}
-            <div className="bg-white/90 border border-neutral-200 rounded-2xl p-5 shadow-sm">
-              <p className="text-xs font-medium text-neutral-500 tracking-[0.18em] uppercase mb-2">
-                Primary Source · 1776
+            {/* Child textile workers wages / factory testimony */}
+            <article className="flex flex-col gap-3 rounded-2xl border border-stone-200 bg-[#fffdf7] p-5 shadow-sm">
+              <header className="space-y-1">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">
+                  Primary Source 2
+                </p>
+                <h2 className="text-sm font-semibold text-neutral-900">
+                  Child Textile Workers&apos; Wages Report (19th Century)
+                </h2>
+              </header>
+
+              <div className="rounded-xl border border-stone-200 bg-white p-3">
+                <p className="text-xs leading-relaxed text-stone-800">
+                  This source provides evidence that child textile workers earned low wages, such as
+                  only 6s to 9s per week, which were even lower than other workers (Laura Del Col).
+                  It supports the argument that the Industrial Revolution created significant
+                  economic inequality, including low pay combined with harsh factory conditions.
+                  The purpose of this report is to present factory abuse, which gives it strong
+                  firsthand credibility. However, the testimonies were gathered by reformers, so
+                  some workers may have exaggerated conditions to push for change.
+                </p>
+              </div>
+
+              <div className="space-y-1 text-[11px] text-stone-600">
+                <p className="italic">
+                  Caption: Child workers earning extremely low wages reveal how industrial
+                  factories relied on cheap labour, reinforcing inequality within the new economic
+                  system.
+                </p>
+                <p>
+                  Source note: Compiled by investigators and reformers, this report offers vivid,
+                  firsthand accounts of factory life but may focus on the worst examples to support
+                  calls for regulation.
+                </p>
+              </div>
+            </article>
+          </section>
+
+          {/* ---------- DATA DISPLAY ---------- */}
+          <section className="rounded-2xl border border-amber-200 bg-[#fff8ee] p-5 shadow-sm">
+            <header className="mb-3 space-y-1">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-800">
+                Data Display
               </p>
+              <h2 className="text-sm font-semibold text-neutral-900">
+                Weekly Wages in UK Industries, 1750–1914
+              </h2>
+            </header>
 
-              <h3 className="text-base md:text-lg font-semibold text-neutral-900 mb-2">
-                Adam Smith — The Wealth of Nations
-              </h3>
+            {/* ▼▼▼ [변경됨] 그래프 자리 – 이미지로 교체됨 ▼▼▼ */}
+            <div className="mb-3 overflow-hidden rounded-xl border border-amber-100 bg-white">
+                  <img
+                    src="https://www.researchgate.net/profile/Claire-Mason-9/publication/299953345/figure/fig1/AS:613513877782529@1523284515050/Real-wages-during-and-after-the-industrial-revolution-in-Great-Britain-Data-source.png"
+                    styles="width:100%"
+                    alt="Real wages during (and after) the industrial revolution in Great Britain Data source: Professor Charles Feinstein, The Journal of Economic History [55]"
+                    // [중요] 기존 디자인 유지를 위해 주석 힌트의 클래스 적용
+                    className="h-full w-full object-cover" 
+                  />
+            </div>
+            {/* ▲▲▲ [변경됨] 그래프 자리 – 이미지로 교체됨 ▲▲▲ */}
 
-              <p className="text-sm md:text-base text-neutral-700 leading-relaxed mb-3">
-                Smith argued that restrictive markets and monopolies harmed economic growth. His ideas form the philosophical
-                foundation of modern capitalism, shaping the shift toward open, competitive markets during industrialisation.
+            <div className="space-y-2 text-xs leading-relaxed text-stone-800">
+              <p>
+                This chart presents weekly wage rates for typical workers in UK industries during
+                the Industrial Revolution. It shows that real average weekly wages increased over
+                the long term, while nominal wages had only a slight increasing tendency
+                (Broadberry et al., 2015). It also provides information about workers&apos; wages
+                right before World War I.
               </p>
-
-              <p className="text-xs md:text-sm text-neutral-500 leading-relaxed border-t border-neutral-200 pt-2">
-                <span className="font-semibold">Source Note:</span> Published in 1776 to explain the benefits of free-market
-                economies. Credible as a foundational economic text, but it emphasises theory rather than working-class lived
-                experiences.
+              <p className="italic text-stone-700">
+                Caption: Rising real wages suggest that some workers experienced material
+                improvement over time, yet the contrast with low-paid child workers and unstable
+                employment reveals that economic gains were uneven and often insecure.
+              </p>
+              <p className="text-[11px] text-stone-600">
+                Source note: Based on reconstructed historical wage data for Great Britain, this
+                chart is useful for understanding long-term trends but does not fully show regional
+                differences, gender gaps, or informal labour.
               </p>
             </div>
+          </section>
 
-            {/* Marx & Engels Artifact */}
-            <div className="bg-white/90 border border-neutral-200 rounded-2xl p-5 shadow-sm">
-              <p className="text-xs font-medium text-neutral-500 tracking-[0.18em] uppercase mb-2">
-                Primary Source · 1848
-              </p>
-
-              <h3 className="text-base md:text-lg font-semibold text-neutral-900 mb-2">
-                Marx & Engels — The Communist Manifesto
-              </h3>
-
-              <p className="text-sm md:text-base text-neutral-700 leading-relaxed mb-3">
-                Marx and Engels described how capitalist competition concentrated wealth among factory owners while creating
-                unstable wages and exploitation for workers. Their analysis explains the inequality emerging during the
-                industrial era.
-              </p>
-
-              <p className="text-xs md:text-sm text-neutral-500 leading-relaxed border-t border-neutral-200 pt-2">
-                <span className="font-semibold">Source Note:</span> Written as a political critique. Highly insightful for 
-                understanding class conflict but contains ideological bias due to its revolutionary aims.
-              </p>
-            </div>
-
-          </aside>
-        </section>
-
-        {/* ---------- DATA DISPLAY SECTION ---------- */}
-        <section className="grid md:grid-cols-[1.4fr,2fr] gap-10 items-center">
-
-          {/* Graph Placeholder */}
-          <div className="aspect-[4/3] rounded-2xl border border-dashed border-neutral-300 bg-white/70 flex items-center justify-center text-neutral-400 text-sm">
-            📊 Wage Increase & Productivity Growth Chart (1750–1914) goes here
-          </div>
-
-          {/* Caption */}
-          <article className="space-y-3">
-            <h2 className="text-lg font-semibold text-neutral-900">
-              Data · Uneven Wage Growth During Industrialisation
+          {/* ---------- PAGE CLOSE ---------- */}
+          <section className="rounded-2xl border border-stone-200 bg-[#fffdf7] p-5 shadow-sm">
+            <h2 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-stone-500">
+              Page Close
             </h2>
-
-            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
-              Historical wage trends show that national income and productivity rose sharply as machines improved factory
-              efficiency. However, workers’ wages grew far more slowly, creating a widening gap between labourers and owners.
+            <p className="text-sm leading-relaxed text-neutral-800">
+              Overall, even though the Industrial Revolution raised some wages and expanded
+              production, it also strengthened economic inequality and made many workers&apos;
+              livelihoods unstable. Understanding the patterns of industrial-era wages and labour
+              helps us see how this period shaped modern debates about fairness, workers&apos;
+              rights, and the true cost of economic growth.
             </p>
-
-            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
-              This inequality supports the claim that industrialisation produced wealth—but unevenly. The benefits were not
-              distributed fairly, deepening class divides that continue in modern economies.
-            </p>
-          </article>
-
-        </section>
-
-        {/* ---------- PAGE CLOSE ---------- */}
-        <section className="border-t border-neutral-200 pt-6">
-          <p className="text-base md:text-lg text-neutral-800 leading-relaxed max-w-3xl">
-            The economic legacy of the Industrial Revolution reveals a central truth: innovation is powerful, but without
-            fair systems, progress can widen inequality. Understanding this tension helps us interpret modern debates about
-            labour, automation, and global wealth distribution.
-          </p>
-        </section>
-
+          </section>
+        </div>
       </div>
     </main>
   );
