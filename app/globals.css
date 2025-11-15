@@ -1,26 +1,250 @@
+/* --------------------------------------------------
+   🧩 Tailwind + Base Imports
+-------------------------------------------------- */
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* --------------------------------------------------
+   🎨 Theme Variables
+-------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Main gradients */
+  --gradient-primary: linear-gradient(90deg, #ff8a8a, #ffd88c, #8dd0ff);
+  --gradient-secondary: linear-gradient(90deg, #8dd0ff, #ff8a8a);
+
+  /* Background blob gradients */
+  --blob-1: radial-gradient(circle, #ffb4e6 0%, #ffc8a2 80%, transparent 100%);
+  --blob-2: radial-gradient(circle, #a3e4ff 0%, #f3ffd8 70%, transparent 100%);
+
+  /* Theme colors */
+  --background-light: #fafafa;
+  --foreground-light: #1a1a1a;
+  --background-dark: #0a0a0a;
+  --foreground-dark: #ededed;
+
+  /* Font families */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark mode override */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background-light: var(--background-dark);
+    --foreground-light: var(--foreground-dark);
   }
 }
 
+/* --------------------------------------------------
+   🧱 Base Styles
+-------------------------------------------------- */
+html {
+  scroll-behavior: auto; /* 스무스 스크롤 제거 */
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: var(--foreground-light);
+  background-color: var(--background-light);
+  background: radial-gradient(circle at 20% 30%, #fce1f4 0%, transparent 60%),
+              radial-gradient(circle at 80% 40%, #d7e7ff 0%, transparent 60%),
+              radial-gradient(circle at 50% 80%, #fff6c7 0%, transparent 70%),
+              linear-gradient(120deg, #ffffff 0%, #f8faff 100%);
+  background-size: 200% 200%;
+  animation: bgShift 20s ease-in-out infinite alternate;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+@keyframes bgShift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 50% 50%; }
+  100% { background-position: 0% 0%; }
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+}
+
+/* --------------------------------------------------
+   🏠 Layout Styles
+-------------------------------------------------- */
+.main {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.mainDiv {
+  z-index: 10;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* --------------------------------------------------
+   ✨ Text + Visual Elements
+-------------------------------------------------- */
+.bigTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: #4a4a4a;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.ctaButton {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--gradient-secondary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-4px);
+  opacity: 0.9;
+}
+
+.research {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #888;
+  letter-spacing: 0.05em;
+}
+
+.line {
+  margin: 3rem auto 0;
+  width: 1px;
+  height: 40vh;
+  background: linear-gradient(to bottom, transparent, #999, transparent);
+}
+
+/* --------------------------------------------------
+   🌈 Background Gradient Blobs
+-------------------------------------------------- */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 55vw;
+  height: 55vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.55;
+  z-index: -1;
+  mix-blend-mode: overlay;
+}
+
+body::before {
+  background: var(--blob-1);
+  top: -10%;
+  left: -10%;
+  animation: blobMove1 18s ease-in-out infinite alternate;
+}
+
+body::after {
+  background: var(--blob-2);
+  bottom: -15%;
+  right: -15%;
+  animation: blobMove2 20s ease-in-out infinite alternate;
+}
+
+@keyframes blobMove1 {
+  0%   { transform: translate(0,0) scale(1); }
+  50%  { transform: translate(120px,80px) scale(1.2); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+@keyframes blobMove2 {
+  0%   { transform: translate(0,0) scale(1); }
+  50%  { transform: translate(-100px,-60px) scale(1.15); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+/* --------------------------------------------------
+   🪄 Section Styles
+-------------------------------------------------- */
+.container {
+  padding: 0 1.5rem;
+}
+
+.hero {
+  width: 100%;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overview {
+  padding: 4rem 0;
+  width: 100%;
+}
+
+.overviewTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #2c2c2c;
+}
+
+.overviewGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.overviewItem {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.overviewItem:hover {
+  transform: translateY(-8px);
+}
+
+.overviewItem h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.overviewItem p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------
+   ⚙️ Tailwind Inline Theme Support
+-------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background-light);
+  --color-foreground: var(--foreground-light);
+  --font-sans: var(--font-sans);
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
 }
