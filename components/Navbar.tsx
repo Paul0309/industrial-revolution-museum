@@ -23,7 +23,7 @@ export default function Navbar() {
       {/* DESKTOP NAV */}
       <nav className="hidden sm:flex justify-between items-center px-10 py-5 bg-white shadow text-black">
         <Link href="/" className="text-2xl font-semibold">
-          MyProject
+          FPS MUSEUM
         </Link>
 
         <ul className="flex gap-8 text-lg font-medium">
