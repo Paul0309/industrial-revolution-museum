@@ -2,76 +2,141 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function EconomicExhibit() {
+// app/economic/page.tsx
+
+export default function EconomicPage() {
   return (
-    <main className="min-h-screen bg-[#faf9f6] text-[#333] px-6 md:px-20 py-20">
-      <motion.h1
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-4xl md:text-5xl font-bold text-center mb-10"
-      >
-        Economic Impacts — Innovation & Inequality
-      </motion.h1>
+    <main className="min-h-screen flex justify-center px-4 py-16">
+      <div className="w-full max-w-5xl space-y-12">
+        
+        {/* ---------- HEADER ---------- */}
+        <section className="space-y-4 text-center md:text-left">
+          <p className="text-sm font-semibold tracking-[0.2em] text-neutral-500 uppercase">
+            Exhibit 2 · Economic Impacts
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900">
+            Innovation, Productivity, and Inequality
+          </h1>
+          <p className="text-base md:text-lg text-neutral-600 max-w-3xl leading-relaxed mx-auto md:mx-0">
+            How did industrialisation create both unprecedented growth and widening inequality?
+          </p>
+        </section>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.8 }}
-        className="max-w-4xl mx-auto text-lg leading-relaxed text-center mb-16"
-      >
-        The Industrial Revolution brought both economic prosperity and deep inequality. In{" "}
-        <em>The Wealth of Nations</em> (1776), Adam Smith argued that monopolies and trade restrictions
-        hindered fair competition—an idea central to capitalism’s rise. Yet, as Marx and Engels wrote in
-        the <em>Communist Manifesto</em> (1848), industrial competition fueled crises, exploitation, and
-        wage instability for workers. Historical wage data from 1750–1914 confirms a rise in average real
-        income, but this growth was uneven—benefiting factory owners far more than laborers. The era’s
-        economic system generated innovation and global wealth, but it also entrenched class divisions
-        that shaped modern inequality.
-      </motion.p>
+        {/* ---------- MAIN CONTENT GRID ---------- */}
+        <section className="grid gap-10 md:grid-cols-[2fr,1.4fr] items-start">
 
-      {/* Artifacts */}
-      <section className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto mb-20">
-        {["/wealth-of-nations.jpg", "/communist-manifesto.jpg"].map((src, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="bg-white rounded-2xl shadow-md overflow-hidden"
-          >
-            <Image
-              src={src}
-              alt="Artifact"
-              width={800}
-              height={500}
-              className="object-cover w-full h-64"
-            />
-            <div className="p-5">
-              <h3 className="font-semibold text-xl mb-2">Artifact {i + 1}</h3>
-              <p className="text-gray-600 text-sm">
-                Highlights economic ideas shaping modern capitalism and class struggle.
+          {/* ---------- LEFT: Mini-argument ---------- */}
+          <article className="space-y-4 bg-white/80 backdrop-blur-sm border border-neutral-200 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-lg font-semibold text-neutral-900">
+              Mini-Argument · How did industry reshape economies?
+            </h2>
+
+            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
+              <strong>The Industrial Revolution generated massive economic growth but also deepened inequality.</strong> 
+              Adam Smith’s <span className="italic">Wealth of Nations</span> (1776) argued that monopolies and trade barriers 
+              suppressed fair markets, anticipating the competitive capitalist structures that later shaped global trade.
+            </p>
+
+            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
+              Meanwhile, Marx and Engels warned in the <span className="italic">Communist Manifesto</span> (1848) that this 
+              same competition created wage instability and exploitation for workers. Historical wage data from 1750–1914 
+              shows that while productivity and national income grew, pay increases for workers lagged behind, leaving the 
+              benefits of industrialisation concentrated in the hands of factory owners and elites.
+            </p>
+
+            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-medium">
+              These contrasting patterns reveal that industrialisation produced innovation and global wealth—but not evenly. 
+              Economic transformation came with rising class divisions that still echo in modern labour systems.
+            </p>
+          </article>
+
+          {/* ---------- RIGHT SIDE: ARTIFACT CARDS ---------- */}
+          <aside className="space-y-4">
+
+            {/* Adam Smith Artifact */}
+            <div className="bg-white/90 border border-neutral-200 rounded-2xl p-5 shadow-sm">
+              <p className="text-xs font-medium text-neutral-500 tracking-[0.18em] uppercase mb-2">
+                Primary Source · 1776
+              </p>
+
+              <h3 className="text-base md:text-lg font-semibold text-neutral-900 mb-2">
+                Adam Smith — The Wealth of Nations
+              </h3>
+
+              <p className="text-sm md:text-base text-neutral-700 leading-relaxed mb-3">
+                Smith argued that restrictive markets and monopolies harmed economic growth. His ideas form the philosophical
+                foundation of modern capitalism, shaping the shift toward open, competitive markets during industrialisation.
+              </p>
+
+              <p className="text-xs md:text-sm text-neutral-500 leading-relaxed border-t border-neutral-200 pt-2">
+                <span className="font-semibold">Source Note:</span> Published in 1776 to explain the benefits of free-market
+                economies. Credible as a foundational economic text, but it emphasises theory rather than working-class lived
+                experiences.
               </p>
             </div>
-          </motion.div>
-        ))}
-      </section>
 
-      {/* Data */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-5xl mx-auto text-center"
-      >
-        <h2 className="text-2xl font-semibold mb-4">Average Real Wages (1750–1914)</h2>
-        <div className="bg-gray-200 rounded-xl h-64 flex items-center justify-center text-gray-500">
-          Chart Placeholder
-        </div>
-        <p className="mt-4 text-gray-600 text-sm">
-          Wages rose during industrialization but unevenly—reflecting growing inequality.
-        </p>
-      </motion.section>
+            {/* Marx & Engels Artifact */}
+            <div className="bg-white/90 border border-neutral-200 rounded-2xl p-5 shadow-sm">
+              <p className="text-xs font-medium text-neutral-500 tracking-[0.18em] uppercase mb-2">
+                Primary Source · 1848
+              </p>
+
+              <h3 className="text-base md:text-lg font-semibold text-neutral-900 mb-2">
+                Marx & Engels — The Communist Manifesto
+              </h3>
+
+              <p className="text-sm md:text-base text-neutral-700 leading-relaxed mb-3">
+                Marx and Engels described how capitalist competition concentrated wealth among factory owners while creating
+                unstable wages and exploitation for workers. Their analysis explains the inequality emerging during the
+                industrial era.
+              </p>
+
+              <p className="text-xs md:text-sm text-neutral-500 leading-relaxed border-t border-neutral-200 pt-2">
+                <span className="font-semibold">Source Note:</span> Written as a political critique. Highly insightful for 
+                understanding class conflict but contains ideological bias due to its revolutionary aims.
+              </p>
+            </div>
+
+          </aside>
+        </section>
+
+        {/* ---------- DATA DISPLAY SECTION ---------- */}
+        <section className="grid md:grid-cols-[1.4fr,2fr] gap-10 items-center">
+
+          {/* Graph Placeholder */}
+          <div className="aspect-[4/3] rounded-2xl border border-dashed border-neutral-300 bg-white/70 flex items-center justify-center text-neutral-400 text-sm">
+            📊 Wage Increase & Productivity Growth Chart (1750–1914) goes here
+          </div>
+
+          {/* Caption */}
+          <article className="space-y-3">
+            <h2 className="text-lg font-semibold text-neutral-900">
+              Data · Uneven Wage Growth During Industrialisation
+            </h2>
+
+            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
+              Historical wage trends show that national income and productivity rose sharply as machines improved factory
+              efficiency. However, workers’ wages grew far more slowly, creating a widening gap between labourers and owners.
+            </p>
+
+            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
+              This inequality supports the claim that industrialisation produced wealth—but unevenly. The benefits were not
+              distributed fairly, deepening class divides that continue in modern economies.
+            </p>
+          </article>
+
+        </section>
+
+        {/* ---------- PAGE CLOSE ---------- */}
+        <section className="border-t border-neutral-200 pt-6">
+          <p className="text-base md:text-lg text-neutral-800 leading-relaxed max-w-3xl">
+            The economic legacy of the Industrial Revolution reveals a central truth: innovation is powerful, but without
+            fair systems, progress can widen inequality. Understanding this tension helps us interpret modern debates about
+            labour, automation, and global wealth distribution.
+          </p>
+        </section>
+
+      </div>
     </main>
   );
 }
