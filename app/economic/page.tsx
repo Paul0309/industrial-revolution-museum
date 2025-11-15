@@ -134,7 +134,6 @@ export default function EconomicPage() {
             <div className="mb-3 overflow-hidden rounded-xl border border-amber-100 bg-white">
                   <img
                     src="https://www.researchgate.net/profile/Claire-Mason-9/publication/299953345/figure/fig1/AS:613513877782529@1523284515050/Real-wages-during-and-after-the-industrial-revolution-in-Great-Britain-Data-source.png"
-                    styles="width:100%"
                     alt="Real wages during (and after) the industrial revolution in Great Britain Data source: Professor Charles Feinstein, The Journal of Economic History [55]"
                     // [중요] 기존 디자인 유지를 위해 주석 힌트의 클래스 적용
                     className="h-full w-full object-cover" 
