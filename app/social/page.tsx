@@ -3,122 +3,128 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function SocialExhibit() {
-  const textBlocks = [
-    "Industrialization dramatically reshaped society by transforming daily routines and redefining class structures.",
-    "The Factory Act of 1833 marked an early effort to protect children, limiting night shifts and improving working conditions.",
-    "Japan’s 1868 Charter Oath symbolized the Meiji Restoration’s rapid push toward modernization and social reform.",
-    "Urbanization between 1850–1914 accelerated dramatically, shifting populations from rural villages into crowded industrial cities.",
-    "Industrialization was not only mechanical progress—it reshaped how families lived, worked, and imagined the future."
-  ];
-
+// app/social/page.tsx
+export default function SocialPage() {
   return (
-    <main className="min-h-screen bg-[#faf9f6] text-[#333] px-6 md:px-20 py-24">
+    <main className="min-h-screen flex justify-center px-4 py-16">
+      <div className="w-full max-w-5xl space-y-12">
+        {/* 섹션 헤더 */}
+        <section className="space-y-4 text-center md:text-left">
+          <p className="text-sm font-semibold tracking-[0.2em] text-neutral-500 uppercase">
+            Exhibit 1 · Social Impacts
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900">
+            Life Transformed by Industrialization
+          </h1>
+          <p className="text-base md:text-lg text-neutral-600 max-w-3xl mx-auto md:mx-0 leading-relaxed">
+            How did industrialisation change the way people lived, worked, and understood their place in society?
+          </p>
+        </section>
 
-      {/* Title */}
-      <motion.h1 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-5xl font-bold text-center mb-16 tracking-tight"
-      >
-        Social Impacts — Life Transformed
-      </motion.h1>
+        {/* 메인 콘텐츠: 왼쪽 논지, 오른쪽 아티팩트 카드들 */}
+        <section className="grid gap-10 md:grid-cols-[2fr,1.4fr] items-start">
+          {/* 왼쪽: Mini-argument (쪼개서 가독성 ↑) */}
+          <article className="space-y-4 bg-white/80 backdrop-blur-sm border border-neutral-200 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-lg font-semibold text-neutral-900">
+              Mini-Argument · How did industrialization change people’s lives?
+            </h2>
+            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
+              Industrialization dramatically reshaped society by reforming social structures and daily life. Japan’s
+              <span className="italic"> Charter Oath of 1868</span> reveals how entire societies were forced to abandon
+              outdated customs and adopt modern principles, marking a dramatic political and cultural shift during the
+              Meiji Restoration.
+            </p>
+            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
+              In Britain, the <span className="italic">Factory Act of 1833</span> restricted child labour and banned night
+              work for minors, showing that governments slowly began recognising the need to protect workers from harsh
+              factory conditions. Urbanisation data from 1850–1914 shows rapid growth of city populations, proving how
+              industrialisation pulled people into crowded urban centres and transformed housing, sanitation, and
+              community life.
+            </p>
+            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-medium">
+              Together, these changes show that industrialisation was not just mechanical progress—it was a social
+              revolution that redefined what “modern life” meant.
+            </p>
+          </article>
 
-      {/* Scrollytelling Text Blocks */}
-      <section className="space-y-16 max-w-4xl mx-auto mb-24">
-        {textBlocks.map((text, i) => (
-          <motion.p
-            key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: false, margin: "-100px" }}
-            className="text-lg leading-relaxed bg-white p-6 rounded-xl shadow-sm border border-gray-200"
-          >
-            {text}
-          </motion.p>
-        ))}
-      </section>
-
-      {/* Artifact Section */}
-      <h2 className="text-3xl font-semibold mb-10 text-center">Artifacts</h2>
-
-      <section className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-24">
-        {[
-          {
-            title: "Factory Act (1833)",
-            desc: "Shows early government intervention to protect children in industrial workplaces.",
-            srcNote: "UK Parliament (1833), reform legislation; shows legal effort to protect youth laborers. Limit: focuses on formal rules, not lived conditions.",
-            img: "/artifact1.jpg"
-          },
-          {
-            title: "Meiji Charter Oath (1868)",
-            desc: "Illustrates Japan’s deliberate shift away from feudal social structures.",
-            srcNote: "Japanese Government (1868), modernization decree; shows national goals for reform. Limit: represents elite perspective.",
-            img: "/artifact2.jpg"
-          }
-        ].map((art, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-200"
-          >
-            <Image
-              src={art.img}
-              alt={art.title}
-              width={800}
-              height={500}
-              className="w-full h-64 object-cover"
-            />
-
-            <div className="p-6 space-y-3">
-              <h3 className="text-xl font-semibold">{art.title}</h3>
-              <p className="text-gray-600 text-sm">{art.desc}</p>
-
-              <p className="text-gray-500 text-xs italic leading-relaxed">
-                <span className="font-semibold">Source Note:</span> {art.srcNote}
+          {/* 오른쪽: 아티팩트 카드들 */}
+          <aside className="space-y-4">
+            {/* Factory Act 카드 */}
+            <div className="bg-white/90 border border-neutral-200 rounded-2xl p-5 shadow-sm">
+              <p className="text-xs font-medium text-neutral-500 tracking-[0.18em] uppercase mb-2">
+                Primary Source · Britain
+              </p>
+              <h3 className="text-base md:text-lg font-semibold text-neutral-900 mb-2">
+                Factory Act of 1833 – Regulating Child Labour
+              </h3>
+              <p className="text-sm md:text-base text-neutral-700 leading-relaxed mb-3">
+                This document limited night work for children and teenagers in textile mills. It shows that public
+                pressure and political debate gradually pushed the British government to respond to the social costs of
+                industrialisation.
+              </p>
+              <p className="text-xs md:text-sm text-neutral-500 leading-relaxed border-t border-neutral-200 pt-2">
+                <span className="font-semibold">Source Note:</span> British Parliament, <span className="italic">
+                  Factory Act
+                </span>{" "}
+                (1833), reform law intended to protect child workers. Credible as an official record, but it focuses on
+                legal rules and does not capture how often factories actually obeyed the law.
               </p>
             </div>
-          </motion.div>
-        ))}
-      </section>
 
-      {/* Data Display */}
-      <h2 className="text-3xl font-semibold text-center mb-8">
-        Urban Population Growth (1850–1914)
-      </h2>
+            {/* Charter Oath 카드 */}
+            <div className="bg-white/90 border border-neutral-200 rounded-2xl p-5 shadow-sm">
+              <p className="text-xs font-medium text-neutral-500 tracking-[0.18em] uppercase mb-2">
+                Primary Source · Japan
+              </p>
+              <h3 className="text-base md:text-lg font-semibold text-neutral-900 mb-2">
+                Charter Oath of 1868 – A New Social Order
+              </h3>
+              <p className="text-sm md:text-base text-neutral-700 leading-relaxed mb-3">
+                The Charter Oath declared that “outdated and harmful practices” should be abolished, signalling Japan’s
+                shift towards modern, “universal” principles after centuries of isolation. It captures how elites tried to
+                redesign politics, society, and identity in response to industrial-era pressure.
+              </p>
+              <p className="text-xs md:text-sm text-neutral-500 leading-relaxed border-t border-neutral-200 pt-2">
+                <span className="font-semibold">Source Note:</span> Emperor Meiji,{" "}
+                <span className="italic">Charter Oath</span> (1868), political reform statement. Credible for understanding
+                official goals, but it reflects elite perspectives and downplays resistance from groups like the samurai.
+              </p>
+            </div>
+          </aside>
+        </section>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="bg-white rounded-xl border border-gray-200 shadow-sm max-w-5xl mx-auto p-10"
-      >
-        <div className="h-64 w-full bg-gray-100 rounded-lg flex items-center justify-center text-gray-500">
-          <img src="https://www.campop.geog.cam.ac.uk/blog/wp-content/uploads/Copy-of-Copy-of-new-Figure-1-scaled.jpg" style={{ width: "50%" }}>
-          </img>
-        </div>
+        {/* 데이터 디스플레이 카드 */}
+        <section className="grid md:grid-cols-[1.4fr,2fr] gap-10 items-center">
+          {/* 그래프 자리 */}
+          <div className="aspect-[4/3] rounded-2xl border border-dashed border-neutral-300 bg-white/70 flex items-center justify-center text-neutral-400 text-sm">
+            <span>📊 Urban population growth chart (1850–1914) goes here</span>
+          </div>
 
-        <p className="text-gray-600 text-sm mt-4 leading-relaxed">
-          Urban population data shows dramatic migration into industrial cities during the 19th century,
-          illustrating how economic opportunity and new factory systems reshaped social structures.
-        </p>
-      </motion.div>
+          {/* 데이터 캡션 */}
+          <article className="space-y-3">
+            <h2 className="text-lg font-semibold text-neutral-900">Data · Urbanisation During Industrialisation</h2>
+            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
+              A chart of the share of population living in urban areas from 1850–1914 shows a clear upward trend. As
+              factories expanded, more people left rural communities and moved into industrial cities.
+            </p>
+            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
+              This rise in urbanisation supports the claim that industrialisation reshaped everyday life. It concentrated
+              workers in dense environments, intensifying both opportunities (jobs, wages) and problems (overcrowding,
+              disease, and pollution).
+            </p>
+          </article>
+        </section>
 
-      {/* Page Close */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="text-center text-gray-700 mt-24 text-lg max-w-3xl mx-auto"
-      >
-        Social life was transformed by industrialization—not only through machines and factories,
-        but through the reshaping of routines, families, and identities. These changes reveal the
-        human dimension of industrial progress.
-      </motion.p>
+        {/* Page Close */}
+        <section className="border-t border-neutral-200 pt-6">
+          <p className="text-base md:text-lg text-neutral-800 leading-relaxed max-w-3xl">
+            Overall, the social impact of the Industrial Revolution shows that technology alone does not define progress.
+            Real change came when laws, values, and social structures began to adapt—raising new questions about whose
+            lives were improved, and at what cost.
+          </p>
+        </section>
+      </div>
     </main>
   );
 }
+
